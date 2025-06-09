@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3Skill.shop - Fixed</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: rgba(26, 26, 46, 0.85);
+      backdrop-filter: blur(10px);
+    }
+    .hero-section-fixed {
+      height: 100vh;
+      position: relative;
+      width: 100%;
+    }
+    #visual-stage {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+    .content-section {
+      position: relative;
+      z-index: 10;
+      background-color: #1a1a2e;
+      padding: 50px 0;
+    }
+    .logo-3skill img {
+      width: 80px;
+    }
+    .active-nav-link {
+      color: #00aaff !important;
+      font-weight: 600;
+      position: relative;
+    }
+    .active-nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, #00aaff, #aa00ff);
+      border-radius: 2px;
+    }
+    .nav-link-hover:hover {
+      color: #00aaff !important;
+      text-shadow: 0 0 8px rgba(0, 170, 255, 0.7);
+    }
+    .btn-primary, .btn-secondary {
+      font-weight: 600;
+      padding: 12px 24px;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #0077cc, #7700cc);
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 119, 204, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 119, 204, 0.5);
+    }
+    .btn-secondary {
+      background-color: #3a3a5a;
+      color: #e0e0e0;
+      border: 1px solid #5a5a7a;
+    }
+    .btn-secondary:hover {
+      background-color: #4a4a6a;
+      transform: translateY(-2px);
+    }
+    #logo {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px; height: 120px;
+      background: url(logo\ sq\ no\ bg.png) no-repeat center/contain;
+      opacity: 0; z-index: 10;
+    }
+    #welcome-container {
+      position: absolute; left: 10vw; top: 45%;
+      transform: translateY(-50%); opacity: 0;
+      pointer-events: auto; user-select: none; z-index: 5;
+    }
+    #welcome-container h1 {
+      font-size: 2.8rem; font-weight: 800;
+    }
+    #welcome-image {
+      width: 300px; height: 90px; opacity: 0;
+    }
+    #orbital-container {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 0; height: 0;
+      transform-style: preserve-3d;
+    }
+    .orbital-word {
+      position: absolute; font-size: 1.5rem;
+      font-weight: 600; color: #fff;
+      white-space: nowrap; opacity: 0;
+      transform-style: preserve-3d;
+    }
+    .orbital-word.join-now {
+      font-size: 2.2rem; font-weight: 700;
+    }
+
+.hero-section-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 10;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.hero-section-hidden {
+  opacity: 0;
+  transform: translateY(-100px);
+  pointer-events: none;
+}
+
+.testimonial-container {
+  max-width: 1000px;
+  margin: 50px auto;
+  background: #12121b;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  padding: 40px;
+}
+.section-header h1 {
+  color: #1c5dde;
+  font-size: 32px;
+}
+.section-header p {
+  color: #ece1e1;
+}
+.testimonials-item {
+  background: #737171f1;
+  padding: 25px;
+  border-radius: 8px;
+  text-align: center;
+}
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+.profile-image img {
+  height: 75px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+.profile-desc span:first-child {
+  font-weight: bold;
+  color: #fff;
+}
+.profile-desc span:last-child {
+  font-size: 12px;
+  color: #fff;
+}
+.testimonials-item p {
+  color: #d9d8d8;
+}
+.quote {
+  font-size: 24px;
+  color: #aaa;
+}
+.ratings i {
+  color: #f1c40f;
+}
+.owl-nav button.owl-prev,
+.owl-nav button.owl-next {
+  font-size: 24px !important;
+  width: 50px;
+  height: 50px;
+  background-color: #616366 !important;
+  border-radius: 50%;
+  margin: 0 10px;
+  color: #000 !important;
+}
+.owl-nav button.owl-prev:hover,
+.owl-nav button.owl-next:hover {
+  background-color: #3866dc !important;
+}
+.owl-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <a href="#" class="logo-3skill nav-link" data-target="home">
+        <img src="https://3skill.shop/Vertical_Lockup_on_White_Background__3_-removebg-preview.png">
+      </a>
+      <div class="hidden md:flex space-x-8 items-center">
+        <a href="#" class="text-gray-300 nav-link-hover nav-link active-nav-link" data-target="home">Home</a>
+        <a href="#Courses" class="text-gray-300 nav-link-hover nav-link" data-target="Courses">Courses</a>
+        <a href="#How it Works" class="text-gray-300 nav-link-hover nav-link" data-target="How it Works">How it Works</a>
+        <a href="#About Us" class="text-gray-300 nav-link-hover nav-link" data-target="About Us">About Us</a>
+        <button id="loginBtn" class="btn-secondary text-sm">Login</button>
+        <button id="signupBtn" class="btn-primary text-sm">Sign Up</button>
+      </div>
+      <div class="md:hidden">
+        <button id="mobileMenuButton" class="text-gray-300 hover:text-blue-400">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
+    </nav>
+    <div id="mobileMenu" class="md:hidden hidden bg-gray-800">
+      <a href="#" class="block py-3 px-6 text-gray-300 hover:bg-gray-700 nav-link" data-target="home">Home</a>
+      <a href="#Courses" class="block py-3 px-6 text-gray-300 hover:bg-gray-700 nav-link" data-target="Courses">Courses</a>
+      <a href="#How it Works" class="block py-3 px-6 text-gray-300 hover:bg-gray-700 nav-link" data-target="How it Works">How it Works</a>
+      <a href="#About Us" class="block py-3 px-6 text-gray-300 hover:bg-gray-700 nav-link" data-target="About Us">About Us</a>
+      <div class="px-6 py-3">
+        <button class="w-full btn-secondary mb-2">Login</button>
+        <button class="w-full btn-primary">Sign Up</button>
+      </div>
+    </div>
+  </header>
+
+
+  <main>
+    <section id="home" class="hero-section-fixed">
+      <div id="visual-stage">
+        <div id="logo"></div>
+        <div id="welcome-container">
+          <h1>Welcome</h1>
+          <div id="welcome-image"></div>
+        </div>
+        <div id="orbital-container"></div>
+      </div>
+    </section>
+
+    <!-- ✅ Placeholder Section: Why 3Skill -->
+<section id="why-3skill" class="why-choose-us relative z-0 pt-[120vh] pb-20 bg-white">
+  <style>
+    .why-choose-us {
+      font-family: 'Poppins', 'Arial', sans-serif;
+      background-color: #1a1a2e;
+      color: #444;
+    }
+
+    .why-choose-us .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-title h2 {
+      font-size: 2.8em;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+
+    .section-title .subtitle {
+      font-size: 1.2em;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .reasons-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 35px;
+    }
+
+    @media (min-width: 768px) {
+      .reasons-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .reason-item {
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.07);
+      display: flex;
+      align-items: flex-start;
+      opacity: 0;
+      transition: all 0.7s ease;
+    }
+
+    .reason-item:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.1);
+    }
+
+    .reason-icon {
+      font-size: 2.8em;
+      color: #1abc9c;
+      margin-right: 25px;
+      flex-shrink: 0;
+      width: 60px;
+      text-align: center;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    .reason-item:hover .reason-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .reason-content h3 {
+      font-size: 1.5em;
+      font-weight: 500;
+      color: #34495e;
+      margin: 0 0 12px 0;
+    }
+
+    .reason-content p {
+      font-size: 1em;
+      color: #555;
+      margin: 0;
+    }
+
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.6s ease-out;
+    }
+
+    .animate-on-scroll.is-visible {
+      opacity: 1;
+      transform: none;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <div class="container">
+    <div class="section-title animate-on-scroll">
+      <h2>Why 3Skill?</h2>
+      <p class="subtitle">Unlock Your Potential With Us.</p>
+    </div>
+
+    <div class="reasons-grid">
+      <div class="reason-item animate-on-scroll">
+        <div class="reason-icon"><i class="fas fa-chalkboard-teacher"></i></div>
+        <div class="reason-content">
+          <h3>Expert-Led, Industry-Relevant Training</h3>
+          <p>Learn from seasoned professionals delivering real-world insights and skills employers value.</p>
+        </div>
+      </div>
+
+      <div class="reason-item animate-on-scroll">
+        <div class="reason-icon"><i class="fas fa-laptop-code"></i></div>
+        <div class="reason-content">
+          <h3>Hands-On Projects</h3>
+          <p>Build real-world projects to strengthen your skills and portfolio with confidence.</p>
+        </div>
+      </div>
+
+      <div class="reason-item animate-on-scroll">
+        <div class="reason-icon"><i class="fas fa-briefcase"></i></div>
+        <div class="reason-content">
+          <h3>Internships & Career Support</h3>
+          <p>Get help with resumes, interviews, and internship programs that launch your career.</p>
+        </div>
+      </div>
+
+      <div class="reason-item animate-on-scroll">
+        <div class="reason-icon"><i class="fas fa-clock"></i></div>
+        <div class="reason-content">
+          <h3>Flexible Learning</h3>
+          <p>Access courses anytime, anywhere, and learn at your own pace without pressure.</p>
+        </div>
+      </div>
+
+      <div class="reason-item animate-on-scroll">
+        <div class="reason-icon"><i class="fas fa-certificate"></i></div>
+        <div class="reason-content">
+          <h3>Certifications</h3>
+          <p>Earn respected certifications that prove your skills to employers.</p>
+        </div>
+      </div>
+
+      <div class="reason-item animate-on-scroll">
+        <div class="reason-icon"><i class="fas fa-users"></i></div>
+        <div class="reason-content">
+          <h3>Learning Community</h3>
+          <p>Connect with peers and mentors for a collaborative and supportive learning experience.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const animated = document.querySelectorAll('.animate-on-scroll');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      animated.forEach(el => observer.observe(el));
+    });
+  </script>
+</section>
+<!--Our courses section starts-->
+<section id="Courses" class="flex flex-col gap-16 px-6 py-16 max-w-6xl mx-auto">
+  <!-- Section Header -->
+  <h1 class="text-4xl font-bold text-center text-white" data-aos="fade-down" data-aos-duration="1000">
+    Our Courses
+  </h1>
+
+  <!-- Course Blocks -->
+  <div class="grid md:grid-cols-2 gap-12">
+    <!-- Data Science -->
+    <div class="flex flex-col gap-4" data-aos="fade-right" data-aos-duration="1000">
+      <h2 class="text-2xl font-semibold text-white">Data Science</h2>
+      <p class="text-white">
+        Master data analysis, Python programming, data visualization tools, and hands-on real-world projects to build practical skills. This training equips you with the expertise needed to become industry-ready and confident in pursuing a data science career.
+      </p>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="1000">
+      <img src="https://i.pinimg.com/1200x/cf/99/65/cf99652c996648fee6608ae12643dee3.jpg" alt="Data Science" class="w-full h-64 object-cover rounded-lg shadow-lg">
+    </div>
+
+    <!-- Artificial Intelligence -->
+    <div class="flex flex-col gap-4" data-aos="fade-right" data-aos-duration="1000">
+      <h2 class="text-2xl font-semibold text-white">Artificial Intelligence</h2>
+      <p class="text-white">
+        Dive into the fundamentals of AI, machine learning, and deep learning through hands-on projects and expert-led training. Build real-world skills and gain practical experience to prepare for a successful tech career.
+      </p>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="1000">
+      <img src="https://i.pinimg.com/1200x/8d/a9/61/8da961b20ae917e53dfd5fa8d0aebcee.jpg" alt="Artificial Intelligence" class="w-full h-64 object-cover rounded-lg shadow-lg">
+    </div>
+
+    <!-- Web Development -->
+    <div class="flex flex-col gap-4" data-aos="fade-right" data-aos-duration="1000">
+      <h2 class="text-2xl font-semibold text-white">Web Development</h2>
+      <p class="text-white">
+        Learn to build responsive websites and dynamic apps using HTML, CSS, JavaScript, and React. Gain essential front-end skills through real-world projects guided by expert mentors.
+      </p>
+    </div>
+    <div data-aos="fade-left" data-aos-duration="1000">
+      <img src="https://i.pinimg.com/1200x/86/e4/55/86e4553da724e59cf8faef81b90dd111.jpg" alt="Web Development" class="w-full h-64 object-cover rounded-lg shadow-lg">
+    </div>
+  </div>
+</section>
+<!--Our courses section eands-->
+
+<!--categories-->
+<section class="py-16 bg-gray-900 text-white text-center">
+  <h2 class="text-4xl font-bold mb-12" data-aos="fade-down" data-aos-duration="1000">
+    Explore Our Categories
+  </h2>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 px-6 max-w-6xl mx-auto">
+    <!-- Data Science -->
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300" data-aos="zoom-in">
+      <img src="https://images.unsplash.com/photo-1666875753105-c63a6f3bdc86?q=80&w=2946&auto=format&fit=crop" alt="Data Science" class="w-full h-56 object-fit">
+      <h3 class="text-xl font-semibold py-4">Data Science</h3>
+    </div>
+
+    <!-- Artificial Intelligence -->
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="100">
+      <img src="https://plus.unsplash.com/premium_photo-1683121710572-7723bd2e235d?q=80&w=3132&auto=format&fit=crop" alt="Artificial Intelligence" class="w-full h-56 object-cover">
+      <h3 class="text-xl font-semibold py-4">Artificial Intelligence</h3>
+    </div>
+
+    <!-- Web Development -->
+    <div class="bg-gray-800 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300" data-aos="zoom-in" data-aos-delay="200">
+      <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?q=80&w=2940&auto=format&fit=crop" alt="Web Development" class="w-full h-56 object-fit">
+      <h3 class="text-xl font-semibold py-4">Web Development</h3>
+    </div>
+  </div>
+</section>
+
+<!--Our Placed Students-->
+ <section class="py-20 bg-gray-900 text-white text-center">
+  <h2 class="text-4xl font-bold mb-12" data-aos="fade-down">Our Placed Interns</h2>
+
+  <div class="relative max-w-xl mx-auto bg-gray-800 rounded-xl overflow-hidden shadow-lg px-6 py-10">
+    <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
+      
+      <!-- Intern 1 -->
+      <div class="min-w-full flex items-center gap-6">
+        <img src="https://cdn.shopify.com/s/files/1/0625/1911/5875/files/WhatsApp_Image_2025-04-02_at_19.07.44_454f4f6c.jpg?v=1743690980" alt="Intern 1" class="w-24 h-24 rounded-md object-cover flex-shrink-0" />
+        <div class="text-left">
+          <div class="text-xl font-semibold">Sunil Kumar Sahoo</div>
+          <div class="text-sm text-gray-300">Marketing Intern</div>
+        </div>
+      </div>
+
+      <!-- Intern 2 -->
+      <div class="min-w-full flex items-center gap-6">
+        <img src="https://cdn.shopify.com/s/files/1/0625/1911/5875/files/WhatsApp_Image_2025-04-02_at_12.19.35_2c0c6a47.jpg?v=1743690948" alt="Intern 2" class="w-24 h-24 rounded-md object-cover flex-shrink-0" />
+        <div class="text-left">
+          <div class="text-xl font-semibold">Bigyajeet Kumar Patra</div>
+          <div class="text-sm text-gray-300">Design & Data Analysis Intern</div>
+        </div>
+      </div>
+
+      <!-- Intern 3 -->
+      <div class="min-w-full flex items-center gap-6">
+        <img src="https://cdn.shopify.com/s/files/1/0625/1911/5875/files/WhatsApp_Image_2025-04-02_at_13.47.33_bdb51c26.jpg?v=1743690881" alt="Intern 3" class="w-24 h-24 rounded-md object-cover flex-shrink-0" />
+        <div class="text-left">
+          <div class="text-xl font-semibold">Om Prakash Khuntia</div>
+          <div class="text-sm text-gray-300">Design & Data Analysis Intern</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Buttons -->
+    <div class="absolute inset-0 flex items-center justify-between px-4">
+      <button id="prevBtn" class="text-white text-3xl bg-gray-700 hover:bg-gray-600 rounded-full p-2">&#10094;</button>
+      <button id="nextBtn" class="text-white text-3xl bg-gray-700 hover:bg-gray-600 rounded-full p-2">&#10095;</button>
+    </div>
+  </div>
+</section>
+
+<script>
+  const track = document.getElementById("carousel-track");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  let currentIndex = 0;
+  const totalItems = track.children.length;
+
+  function updateCarousel() {
+    const offset = -currentIndex * 100;
+    track.style.transform = `translateX(${offset}%)`;
+  }
+
+  nextBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex + 1) % totalItems;
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+    updateCarousel();
+  });
+</script>
+
+<!--our partners-->
+
+<section class="py-20 bg-gray-950 text-white text-center">
+  <h2 class="text-4xl font-bold mb-12" data-aos="fade-down">Our Trusted Partners</h2>
+
+  <div class="overflow-hidden relative">
+    <div class="flex animate-scroll-x space-x-10 w-max" onmouseover="this.style.animationPlayState='paused'" onmouseout="this.style.animationPlayState='running'">
+      <!-- Partner Logos (Repeat for seamless scroll) -->
+      <div class="flex gap-10">
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(2).png" alt="Partner 1" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(3).png" alt="Partner 2" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(5).png" alt="Partner 3" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(4).png" alt="Partner 4" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <!-- Repeated for loop effect -->
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(2).png" alt="Partner 1" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(3).png" alt="Partner 2" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(5).png" alt="Partner 3" class="h-20 hover:scale-110 transition-transform duration-300" />
+        <img src="https://3skill.shop/White%20and%20Black%20Minimal%20Letter%20SA%20Architect%20Company%20Logo%20(4).png" alt="Partner 4" class="h-20 hover:scale-110 transition-transform duration-300" />
+      </div>
+    </div>
+  </div>
+
+  <!-- Tailwind Custom Animation Style -->
+  <style>
+    @keyframes scroll-x {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-60%); }
+    }
+
+    .animate-scroll-x {
+      animation: scroll-x 10s linear infinite;
+    }
+  </style>
+</section>
+
+<!--How it works-->
+<section id="How it Works" class="py-20 bg-indigo-50">
+  <div class="container mx-auto px-6">
+    <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">How It Works</h2>
+
+    <div class="max-w-3xl mx-auto">
+      <div class="progress-container relative mb-10">
+        <div class="progress-line-bg absolute top-1/2 transform -translate-y-1/2 h-1 w-full bg-white z-0"></div>
+        <div id="progress-line" class="progress-line absolute top-1/2 transform -translate-y-1/2 h-1 bg-indigo-600 z-10 transition-all duration-500" style="width: 0%;"></div>
+
+        <!-- Progress Steps -->
+        <div class="flex justify-between relative z-20">
+          <div class="progress-step active" data-step="1"><i class="fas fa-user-plus step-icon"></i></div>
+          <div class="progress-step" data-step="2"><i class="fas fa-comments step-icon"></i></div>
+          <div class="progress-step" data-step="3"><i class="fas fa-file-signature step-icon"></i></div>
+          <div class="progress-step" data-step="4"><i class="fas fa-laptop-code step-icon"></i></div>
+          <div class="progress-step" data-step="5"><i class="fas fa-certificate step-icon"></i></div>
+        </div>
+      </div>
+
+      <!-- Labels Below -->
+      <div class="flex justify-between text-sm text-center font-medium text-gray-600">
+        <div class="w-1/5"><p class="step-label" data-step-label="1">Enroll</p></div>
+        <div class="w-1/5"><p class="step-label" data-step-label="2">Interview</p></div>
+        <div class="w-1/5"><p class="step-label" data-step-label="3">Offer Letter</p></div>
+        <div class="w-1/5"><p class="step-label" data-step-label="4">Hands-on Experience</p></div>
+        <div class="w-1/5"><p class="step-label" data-step-label="5">Get Certified</p></div>
+      </div>
+    </div>
+
+    <div class="text-center mt-10">
+      <button id="prevStep" class="btn btn-primary py-2 px-6 mr-2 opacity-50" disabled>Previous Step</button>
+      <button id="nextStep" class="btn btn-primary py-2 px-6">Next Step</button>
+    </div>
+  </div>
+
+  <!-- Tailwind-Compatible Custom Styles -->
+  <style>
+    .btn {
+      transition: all 0.3s ease-out;
+      border-radius: 0.5rem;
+      font-weight: 600;
+    }
+    .btn-primary {
+      background-color: #4F46E5;
+      color: white;
+    }
+    .btn-primary:hover {
+      background-color: #4338CA;
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 6px 12px rgba(79, 70, 229, 0.5);
+    }
+    .progress-step {
+      width: 40px;
+      height: 40px;
+      background-color: white;
+      border: 3px solid #e0e0e0;
+      border-radius: 9999px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      color: #a0a0a0;
+      transition: all 0.4s ease;
+    }
+    .progress-step.active {
+      background-color: #4F46E5;
+      border-color: #4F46E5;
+      color: white;
+      transform: scale(1.1);
+    }
+    .progress-step.completed {
+      background-color: #34D399;
+      border-color: #34D399;
+      color: white;
+    }
+    .step-label {
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.5s ease-out 0.2s, transform 0.5s ease-out 0.2s;
+    }
+    .progress-step.active ~ .step-label,
+    .progress-step.completed ~ .step-label {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .step-icon {
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+    }
+    .progress-step.active .step-icon {
+      animation: pulseIcon 1s infinite alternate;
+    }
+    @keyframes pulseIcon {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.2); }
+    }
+  </style>
+
+  <!-- Script -->
+  <script>
+    function setupProgressBar() {
+      const progressLine = document.getElementById('progress-line');
+      const progressSteps = document.querySelectorAll('.progress-step');
+      const stepLabels = document.querySelectorAll('.step-label');
+      const nextButton = document.getElementById('nextStep');
+      const prevButton = document.getElementById('prevStep');
+      let currentActiveStep = 1;
+
+      const updateProgressBarState = () => {
+        progressSteps.forEach(step => {
+          const stepNumber = parseInt(step.dataset.step);
+          step.classList.remove('active', 'completed');
+          if (stepNumber < currentActiveStep) {
+            step.classList.add('completed');
+          } else if (stepNumber === currentActiveStep) {
+            step.classList.add('active');
+          }
+        });
+
+        stepLabels.forEach(label => {
+          const labelStep = parseInt(label.dataset.stepLabel);
+          label.style.opacity = labelStep <= currentActiveStep ? '1' : '0';
+          label.style.transform = labelStep <= currentActiveStep ? 'translateY(0)' : 'translateY(10px)';
+        });
+
+        const progressPercentage = ((currentActiveStep - 1) / (progressSteps.length - 1)) * 100;
+        progressLine.style.width = `${progressPercentage}%`;
+
+        prevButton.disabled = currentActiveStep === 1;
+        nextButton.disabled = currentActiveStep === progressSteps.length;
+
+        prevButton.classList.toggle('opacity-50', prevButton.disabled);
+        nextButton.classList.toggle('opacity-50', nextButton.disabled);
+        nextButton.textContent = currentActiveStep === progressSteps.length ? "Completed!" : "Next Step";
+      };
+
+      nextButton.addEventListener('click', () => {
+        if (currentActiveStep < progressSteps.length) {
+          currentActiveStep++;
+          updateProgressBarState();
+        }
+      });
+
+      prevButton.addEventListener('click', () => {
+        if (currentActiveStep > 1) {
+          currentActiveStep--;
+          updateProgressBarState();
+        }
+      });
+
+      updateProgressBarState();
+    }
+
+    document.addEventListener('DOMContentLoaded', setupProgressBar);
+  </script>
+</section>
+<!--exam-->
+<section id="entrance-exam" class="py-20 bg-gradient-to-b from-indigo-50 to-white">
+  <div class="container mx-auto px-6">
+    <div class="text-center">
+      <h2 class="text-4xl font-bold text-gray-800 mb-4 animate-fade-in">Round 1: Entrance Exam</h2>
+      <p class="text-lg text-gray-600 mb-8 animate-slide-up delay-100">
+        Welcome to the 3skill Examination Portal. You're about to begin Round 1 of the entrance exam for your selected course. This exam is designed to assess your fundamental knowledge and readiness to take on real-world tech projects. 🎓 Ready to Begin? Click below to start your test.
+      </p>
+      <p class="text-md text-gray-500 mb-12 animate-slide-up delay-200">
+        ✅ Note: This exam is accessible only after successful payment of the registration fee.
+      </p>
+      <a href="#"
+         class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-8 rounded-full shadow-lg transform transition-transform duration-300 hover:scale-105 animate-bounce-in">
+        Start Round 1 Exam
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials Section -->
+<div class="testimonial-container">
+  <section class="testimonials" id="testimonials">
+    <header class="section-header">
+      <h1>Testimonials</h1>
+      <p>See What Our Proud Interns Say About Us</p>
+    </header>
+
+    <div class="owl-carousel owl-theme testimonials-slider">
+      <div class="item testimonials-item">
+        <div class="profile">
+          <div class="profile-image">
+            <img src="https://cdn.shopify.com/s/files/1/0625/1911/5875/files/WhatsApp_Image_2025-04-03_at_22.52.08_fb9a0a9c.jpg?v=1743751168" />
+          </div>
+          <div class="profile-desc">
+            <span>Dibyaranjan Jena</span>
+            <span>Intern, Data Science</span>
+          </div>
+        </div>
+        <p>I joined the Data Science Training Program at 3SKILL and it was totally worth it. They started from the basics and covered Python, data analysis, statistics, and even data visualization...</p>
+        <div class="quote"><i class="fa fa-quote-left"></i></div>
+        <div class="ratings">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+    <div class="owl-carousel owl-theme testimonials-slider">
+      <div class="item testimonials-item">
+        <div class="profile">
+          <div class="profile-image">
+            <img src="https://cdn.shopify.com/s/files/1/0625/1911/5875/files/WhatsApp_Image_2025-04-03_at_22.51.11_f6a142d7.jpg?v=1743751401" />
+          </div>
+          <div class="profile-desc">
+            <span>Abhinash Jeena</span>
+            <span>Intern, Data Science</span>
+          </div>
+        </div>
+        <p>I wanted to explore data science and 3SKILL was the perfect platform. The 1-month internship was packed with useful lessons and real-time tasks. I got a certificate and experience letter, which I proudly added to my LinkedIn. This course truly helped me stand out.</p>
+        <div class="quote"><i class="fa fa-quote-left"></i></div>
+        <div class="ratings">
+          <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+        </div>
+      </div>
+      
+
+    </div>
+  </section>
+</div>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Us & Footer</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #1a1a2e;
+      color: #e0e0e0;
+      font-family: 'Poppins', sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ABOUT US SECTION -->
+  <section id="About Us" class="py-20 px-6 bg-[#12121b]">
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-4xl font-bold text-blue-500 mb-6">About Us</h2>
+      <p class="text-gray-300 max-w-3xl mx-auto text-lg leading-relaxed">
+        At <span class="text-blue-400 font-semibold">3Skill</span>, we empower learners by bridging the gap between education and industry needs. We specialize in high-demand domains like Data Science, Web Development, AI, and Cybersecurity. 
+        Our platform offers live training, real-world internships, and expert mentorship to ensure every learner becomes industry-ready.
+        <br><br>
+        Whether you're a student, a working professional, or someone looking to switch careers—our flexible, hands-on programs are designed to meet your goals.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER-->
+
+    <footer class="bg-gray-800-dark text-gray-400 py-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
+                <div>
+                    <h3 class="text-xl font-semibold text-white mb-4 logo-3skill">
+                        <img src="https://3skill.shop/Vertical_Lockup_on_White_Background__3_-removebg-preview.png" alt="">
+                        <span class="three">3</span><span class="skill">Skill</span>
+                    </h3>
+                    <p class="mb-4">Join thousands of learners and master future-ready skills with 3Skill. From AI and Web Development to Data Science and emerging tech — learn from top experts at your own pace, anytime, anywhere.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-500 hover:text-blue-400 transition duration-300"><i class="fa fa-envelope mr-2-f text-xl"></i></a>
+                        <a href="https://chat.whatsapp.com/F793VAEOJapK6AUsH5tfq1?fbclid=PAZXh0bgNhZW0CMTEAAacKjsdaKrMHaguuIYKgdoQzZA54Ty5ZRRVXU_3przpS9Q8vSv2vpaDFWBO8NA_aem_D31f94uuSQpVMtdIZpcHKA" class="text-gray-500 hover:text-blue-400 transition duration-300"><i class="fab fa-whatsapp text-xl"></i></a>
+                        <a href="https://www.linkedin.com/company/3-skill/?fbclid=PAZXh0bgNhZW0CMTEAAae5hwtQabSPjvfxQTgIRnchUUpN-6Sm2IRfnvxESU-7lWhD5VuuWhptIEgTAg_aem_x2_3Nh9aIb9TUoj7BqDe7w" class="text-gray-500 hover:text-purple-400 transition duration-300"><i class="fab fa-linkedin-in text-xl"></i></a>
+                        <a href="https://www.instagram.com/3skill.shop?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="text-gray-500 hover:text-pink-400 transition duration-300"><i class="fab fa-instagram text-xl"></i></a>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300 nav-link" data-target="home">Home</a></li>
+                        <li><a href="#Courses" class="hover:text-blue-400 transition duration-300 nav-link" data-target="Courses">Courses</a></li>
+                        <li><a href="#How it Works" class="hover:text-blue-400 transition duration-300 nav-link" data-target="How it Works">How it Works</a></li>
+                        <li><a href="#About Us" class="hover:text-blue-400 transition duration-300 nav-link" data-target="About Us">About Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Categories</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Artificial Intelligence</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Data Science</a></li>
+                        <li><a href="#" class="hover:text-blue-400 transition duration-300">Web Development</a></li>
+
+
+
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold text-white mb-4">Contact Us</h4>
+                    <p class="mb-2"><i class="fas fa-map-marker-alt mr-2 text-blue-400"></i>Address-: Bhubneswar,Odisha</p>
+                    <p class="mb-2"><i class="fas fa-phone-alt mr-2 text-blue-400"></i>Phone-: +91 6372105534</p>
+                    <p><i class="fas fa-envelope mr-2 text-blue-400"></i>Website-: 3skill.shop & 3skill.in</p>
+                    <p><i class="fas fa-envelope mr-2 text-blue-400"></i>Email-:  3skill.contact@gmail.com</p>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 pt-10 text-center">
+                <p>&copy; <span id="currentYear"></span> 3Skill. All rights reserved.</p> 
+               <p> Designed by Abhay & Purba with <i class="fas fa-heart text-pink-500"></i> </p>
+            </div>
+        </div>
+    </footer>
+
+
+
+  </main>
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script>
+    document.getElementById('mobileMenuButton').addEventListener('click', () => {
+      document.getElementById('mobileMenu').classList.toggle('hidden');
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const logo = document.getElementById('logo');
+    const welcome = document.getElementById('welcome-container');
+    const welcomeImage = document.getElementById('welcome-image');
+    const orbitalContainer = document.getElementById('orbital-container');
+
+    const orbitalWords = ["Learn", "Grow", "Succeed", "Web dev", "AI", "ML", "Data science", "Cybersecurity", "4.7+ rating", "Join Now"];
+
+    gsap.to(logo, { opacity: 1, duration: 1, delay: 0.2 });
+    gsap.to(welcome, { opacity: 1, duration: 1, delay: 0.4 });
+    gsap.to(welcomeImage, { opacity: 1, duration: 1, delay: 0.6 });
+
+    orbitalWords.forEach((word, i) => {
+      const div = document.createElement('div');
+      div.classList.add('orbital-word');
+      if (word.toLowerCase() === "join now") div.classList.add('join-now');
+      div.textContent = word;
+      orbitalContainer.appendChild(div);
+
+      const radius = 120 + (i * 15);
+      const verticalOffset = (i % 2 === 0 ? -1 : 1) * (i * 6);
+      const angleStart = Math.random() * Math.PI * 2;
+      const speed = 0.005 + 0.002 * (i % 5);
+
+      gsap.to(div, { opacity: 1, duration: 1.5, delay: 0.8 + i * 0.1 });
+
+      let angle = angleStart;
+      gsap.ticker.add(() => {
+        angle += speed;
+        const x = radius * Math.cos(angle);
+        const z = radius * Math.sin(angle);
+        gsap.set(div, { transform: `translate3d(${x}px, ${verticalOffset}px, ${z}px)` });
+      });
+    });
+  </script>
+
+  <script>
+  const heroSection = document.querySelector('.hero-section-fixed');
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+      heroSection.classList.add('hero-section-hidden');
+    } else {
+      heroSection.classList.remove('hero-section-hidden');
+    }
+  });
+</script>
+
+
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+
+
+
+<!-- Add this HTML at the end of the <body> tag of your integration.html -->
+
+<!-- Modal Container -->
+<!-- Add this HTML at the end of the <body> tag of your integration.html -->
+
+<!-- Modal Container -->
+<div id="authModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-50 flex items-center justify-center px-4">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-md max-h-[90vh] overflow-y-auto p-6 text-black">
+    <div class="flex justify-between items-center mb-4">
+      <h2 id="modalTitle" class="text-xl font-semibold">Login</h2>
+      <button onclick="closeModal()" class="text-gray-600 hover:text-gray-800 text-2xl">&times;</button>
+    </div>
+    <form id="authForm" onsubmit="handleAuth(event)">
+      <div class="mb-4">
+        <label for="username" class="block text-sm font-medium text-gray-700">Username</label>
+        <input id="username" name="username" required type="text" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+      </div>
+      <div class="mb-4">
+        <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+        <input id="password" name="password" required type="password" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm p-2" />
+      </div>
+      <button type="submit" class="btn-primary w-full">Submit</button>
+      <p id="authMessage" class="text-center text-sm mt-3"></p>
+    </form>
+  </div>
+</div>
+
+<!-- Add this popup container -->
+<div id="popupMessage" class="fixed bottom-5 right-5 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg hidden z-50">
+  <span id="popupText">Congrats! You are successfully registered.</span>
+</div>
+
+<!-- Add this JS before </body> -->
+<script>
+  const modal = document.getElementById('authModal');
+  const modalTitle = document.getElementById('modalTitle');
+  const authMessage = document.getElementById('authMessage');
+  const popup = document.getElementById('popupMessage');
+  const popupText = document.getElementById('popupText');
+  let mode = 'login';
+
+  const users = JSON.parse(localStorage.getItem('registeredUsers')) || {};
+
+  // DESKTOP MENU BUTTONS
+  document.getElementById('loginBtn')?.addEventListener('click', () => openModal('login'));
+  document.getElementById('signupBtn')?.addEventListener('click', () => openModal('signup'));
+
+  // MOBILE MENU BUTTONS
+  document.querySelectorAll('button').forEach(btn => {
+    if (btn.textContent.trim().toLowerCase() === 'login') {
+      btn.addEventListener('click', () => {
+        document.getElementById('mobileMenu')?.classList.add('hidden');
+        openModal('login');
+      });
+    }
+    if (btn.textContent.trim().toLowerCase() === 'sign up') {
+      btn.addEventListener('click', () => {
+        document.getElementById('mobileMenu')?.classList.add('hidden');
+        openModal('signup');
+      });
+    }
+  });
+
+  function openModal(selectedMode) {
+    mode = selectedMode;
+    modalTitle.textContent = mode === 'signup' ? 'Sign Up' : 'Login';
+    authMessage.textContent = '';
+    modal.classList.remove('hidden');
+    document.body.classList.add('overflow-hidden');
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  function showPopup(message) {
+    popupText.textContent = message;
+    popup.classList.remove('hidden');
+    setTimeout(() => popup.classList.add('hidden'), 3000);
+  }
+
+  function validateInput(str) {
+    return /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/.test(str);
+  }
+
+  function handleAuth(event) {
+    event.preventDefault();
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value;
+
+    if (!validateInput(username)) {
+      authMessage.textContent = "Username must be 6+ characters with letters, numbers, and symbols.";
+      authMessage.className = 'text-center text-sm mt-3 text-red-600';
+      return;
+    }
+
+    if (!validateInput(password)) {
+      authMessage.textContent = "Password must be 6+ characters with letters, numbers, and symbols.";
+      authMessage.className = 'text-center text-sm mt-3 text-red-600';
+      return;
+    }
+
+    if (mode === 'signup') {
+      if (users[username]) {
+        authMessage.textContent = "Username already exists. Try another.";
+        authMessage.className = 'text-center text-sm mt-3 text-red-600';
+      } else {
+        users[username] = password;
+        localStorage.setItem('registeredUsers', JSON.stringify(users));
+        authMessage.textContent = "";
+        showPopup("🎉 Congrats! You are successfully registered.");
+        setTimeout(closeModal, 2000);
+      }
+    } else {
+      if (users[username] === password) {
+        authMessage.textContent = `Welcome back, ${username}!`;
+        authMessage.className = 'text-center text-sm mt-3 text-green-600';
+        setTimeout(closeModal, 1500);
+      } else {
+        authMessage.textContent = "Invalid username or password.";
+        authMessage.className = 'text-center text-sm mt-3 text-red-600';
+      }
+    }
+  }
+</script>
+
+</body>
+</html>
